@@ -13,7 +13,7 @@ export default function ChatHeader() {
                 <p className='font-bold text-lg'>Nombre del usuario</p>
             </div>
             <div>
-                <Image src={"/logo.png"} width={150} height={150}/>
+                <Image src={"/logo.png"} width={150} height={150} alt="Logo de la app" />
             </div>
         </div>
     )

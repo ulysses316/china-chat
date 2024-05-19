@@ -55,7 +55,7 @@ export default function SignUpCard() {
   return (
     <form onSubmit={formik.handleSubmit} className='border-highlighter border text-white h-auto py-8 w-96 rounded-md bg-fondo flex justify-center items-center flex-col px-4'>
       <div className='flex justify-center text-3xl'>
-        <Image src={"/logo.png"} width={200} height={200} />
+        <Image src={"/logo.png"} width={200} height={200} alt="Logo de la app" />
       </div>
 
       {/* Error General */}

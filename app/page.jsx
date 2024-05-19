@@ -11,7 +11,7 @@ export default function Home() {
       <div
         className={`border-highlighter border bg-fondo h-[95dvh] w-full flex justify-center items-center`}>
         <div className="flex justify-center items-center flex-col w-5/6 sm:w-1/2 gap-4">
-          <Image src={"/logo.png"} width={250} height={250}></Image>
+          <Image src={"/logo.png"} width={250} height={250} alt="Logo de la app"/>
           <p className="text-highlighter text-center">
             Esta pagina la construi para mi esposa, para poder estar en comunicacion en todo momento.
           </p>

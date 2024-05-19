@@ -48,7 +48,7 @@ export default function LoginCard() {
     <form onSubmit={formik.handleSubmit} className='border-highlighter border text-white h-auto py-8 sm:w-96 w-80 rounded-md bg-fondo flex justify-center items-center flex-col px-4'>
       <div className='flex flex-col justify-center gap-2 py-1 w-full'>
         <div className='flex justify-center text-3xl'>
-          <Image src={"/logo.png"} width={200} height={200} />
+          <Image src={"/logo.png"} width={200} height={200} alt="Logo de la app" />
         </div>
 
         {/* Error General */}
