@@ -2,14 +2,14 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { FaRegUser } from "react-icons/fa";
 import Image from 'next/image';
 import { useSession, signIn, signOut } from "next-auth/react"
-
+import { useRouter } from 'next/navigation';
 
 export default function LoginCard() {
   const user = useSession()
-  console.log(user);
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -23,25 +23,23 @@ export default function LoginCard() {
       try {
         const res = await signIn("credentials", {
           email: values.email,
-          password: values.password
+          password: values.password,
+          redirect: false
         })
 
-        const { data, error, message } = await res.json();
-
         if (res.ok) {
-          console.log("Te me cuidas");
-          console.log(data);
+          router.push("/")
         }
+
+        console.log(res);
 
         if (res.status === 401) {
-          // formik.errors.general = error;
-          // formik.touched.general = true;
-          console.log(error);
+          formik.errors.general = res.error;
+          formik.touched.general = true;
         }
       } catch (error) {
-        console.error(error);
-        // formik.errors.general = error;
-        // formik.touched.general = true;
+        formik.errors.general = error;
+        formik.touched.general = true;
       }
     }
   })

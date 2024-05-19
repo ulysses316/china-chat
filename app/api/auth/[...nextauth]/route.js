@@ -4,19 +4,8 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/db/db";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+export const authOptions = {
   providers: [
-    // EmailProvider({
-    //   server: {
-    //     host: process.env.EMAIL_SERVER_HOST,
-    //     port: process.env.EMAIL_SERVER_PORT,
-    //     auth: {
-    //       user: process.env.EMAIL_SERVER_USER,
-    //       pass: process.env.EMAIL_SERVER_PASSWORD,
-    //     },
-    //   },
-    //   from: process.env.EMAIL_FROM,
-    // }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -30,24 +19,25 @@ const handler = NextAuth({
         },
       },
       async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        });
-        const { data } = await res.json();
+        try {
+          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
+            method: "POST",
+            body: JSON.stringify(credentials),
+            headers: { "Content-Type": "application/json" },
+          });
+          const { data, error, status } = await res.json();
 
-        // If no error and we have user data, return it
-        if (res.ok && data) {
-          console.log("PUES SI WE");
-          return data;
+          if (res.ok && data) {
+            return data;
+          } else {
+            throw new Error(error, status);
+          }
+        } catch (error) {
+          throw new Error(error.message || "Internal Server Error");
         }
-        // Return null if user data could not be retrieved
-        return null;
       },
     }),
   ],
-  // adapter: MongoDBAdapter(clientPromise),
   pages: {
     signIn: "/auth/signin",
     newUser: "/auth/signup",
@@ -67,6 +57,8 @@ const handler = NextAuth({
       return session;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

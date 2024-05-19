@@ -12,7 +12,7 @@ export async function POST(request) {
 
     if (!user) {
       return NextResponse.json(
-        { error: "No se encontro ningun usuario" },
+        { error: "No se encontro ningun usuario con ese email" },
         { status: 404 }
       );
     }

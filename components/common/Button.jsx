@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Button({ onClick, href, type, children, className }) {
     if (onClick && !href && !type) {
         return (
-            <button className={`text-white rounded-md bg-alter px-4 py-2 font-bold ${className}`} onClick={onClick} type='button'>
+            <button className={`text-white rounded-md bg-alter px-4 py-2 font-bold text-center ${className}`} onClick={onClick} type='button'>
                 {children}
             </button>
         )
@@ -12,7 +12,7 @@ export default function Button({ onClick, href, type, children, className }) {
 
     else if (href && !type && !onClick) {
         return (
-            <Link href={href} className={`text-white rounded-md bg-alter px-4 py-2 font-bold ${className}`} onClick={onClick}>
+            <Link href={href} className={`text-white rounded-md bg-alter px-4 py-2 font-bold text-center ${className}`} onClick={onClick}>
                 {children}
             </Link>
         )
@@ -20,7 +20,7 @@ export default function Button({ onClick, href, type, children, className }) {
 
     else if (type && !onClick && !href) {
         return (
-            <button className={`text-white rounded-md bg-alter px-4 py-2 font-bold ${className}`} type='submit'>
+            <button className={`text-white rounded-md bg-alter px-4 py-2 font-bold text-center ${className}`} type='submit'>
                 {children}
             </button>
         )

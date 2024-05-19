@@ -15,9 +15,12 @@ export default function Home() {
           <p className="text-highlighter text-center">
             Esta pagina la construi para mi esposa, para poder estar en comunicacion en todo momento.
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-col sm:flex-row">
             {user.status === "authenticated" ? (
-              <Button onClick={signOut}>Cerrar sesion</Button>
+              <>
+                <Button onClick={signOut}>Cerrar sesion</Button>
+                <Button href={"/chat"}>Ir a los chats</Button>
+              </>
             ) : (
 
               <Button href={"/auth/signin"}>Iniciar sesion</Button>
