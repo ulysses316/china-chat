@@ -4,14 +4,17 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   const { email, password, name } = await request.json();
-
+  
   try {
     await connectMongo();
 
     const userExist = await User.findOne({ email: email });
 
     if (userExist) {
-      return NextResponse.json({ error: "El usuario ya existe" }, { status: 400 });
+      return NextResponse.json(
+        { error: "El usuario ya existe" },
+        { status: 400 }
+      );
     }
 
     const user = new User({

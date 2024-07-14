@@ -21,7 +21,7 @@ export default function SignUpCard() {
     }),
     onSubmit: async (values) => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}api/signup`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/signup`, {
           method: "POST",
           headers: {
             "Content-type": "application/json"

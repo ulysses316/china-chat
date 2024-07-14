@@ -4,7 +4,7 @@ import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { IoMdSend } from "react-icons/io";
 import EmojiPicker from "emoji-picker-react";
 
-export default function ChatFooter() {
+export default function ChatFooter({ socket, from, to }) {
     const [message, setMessage] = useState("");
     const [emojiVisible, setEmojiVisible] = useState(false);
 
@@ -14,7 +14,8 @@ export default function ChatFooter() {
 
     const handdleSubmit = (e) => {
         e.preventDefault();
-        alert(message);
+        socket.emit("chat message", {message: message, user_id: to, sender: from})
+        setMessage("");
     };
 
     return (
