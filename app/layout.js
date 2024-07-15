@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import GlobalProviders from "@/components/context/GlobalProviders";
+import "@radix-ui/themes/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

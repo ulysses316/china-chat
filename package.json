@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/mongodb-adapter": "^3.0.0",
     "@headlessui/react": "^1.7.19",
+    "@radix-ui/themes": "^3.1.1",
     "bcrypt": "^5.1.1",
     "emoji-picker-react": "^4.9.2",
     "formik": "^2.4.6",
