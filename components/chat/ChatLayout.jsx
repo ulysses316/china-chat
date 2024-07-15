@@ -4,12 +4,15 @@ import ChatMessage from "./ChatMessage";
 import ChatFooter from "./ChatFooter";
 import { useState } from "react";
 import { io } from "socket.io-client";
+import combineWords from "@/lib/utils/roomName";
 
 export default function ChatLayout({ _id, userName, from, allMessages }) {
     const [sessionMessage, setSessionMessage] = useState([]);
     const socket = io('http://localhost:3001');
+    const roomId = combineWords(_id, from).toString();
+    console.log(roomId);
 
-    socket.on('chat message', (msg) => {
+    socket.on(roomId, (msg) => {
         setSessionMessage([...sessionMessage, msg])
     });
 
@@ -24,7 +27,7 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
                     <ChatMessage key={crypto.randomUUID()} data_message={message} fromThisUser={message.sender === from} />
                 ))}
             </div>
-            <ChatFooter socket={socket} to={_id} from={from} />
+            <ChatFooter socket={socket} to={_id} from={from} roomId={roomId}/>
         </section>
     );
 }
