@@ -19,14 +19,14 @@ export default function ChatFooter({ socket, from, to, roomId }) {
     };
 
     return (
-        <form onSubmit={(e) => handdleSubmit(e)} className='absolute bottom-0 bg-fondo py-2 w-full flex gap-4 items-center px-3 justify-between'>
+        <form onSubmit={(e) => handdleSubmit(e)} className='absolute bottom-0 bg-new-gray py-2 w-full flex gap-4 items-center px-3 justify-between'>
             <MdOutlineEmojiEmotions onClick={() => setEmojiVisible(!emojiVisible)} className="text-3xl" />
             {emojiVisible && (
                 <div className="absolute bottom-20 md:left-16">
                     <EmojiPicker theme="dark" onEmojiClick={(emojiData) => setMessage(message + emojiData.emoji)} />
                 </div>
             )}
-            <textarea className="w-full rounded-md text-my_white bg-fondo border-highlighter border p-1" type="text" value={message} onChange={(e) => handleChange(e.target.value)} />
+            <textarea className="w-full rounded-md text-new-black bg-new-gray border-new-black border p-1" type="text" value={message} onChange={(e) => handleChange(e.target.value)} />
             <button type="submit">
                 <IoMdSend className="text-2xl" />
             </button>

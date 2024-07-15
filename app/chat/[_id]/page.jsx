@@ -14,9 +14,9 @@ export default async function page({ params }) {
     const plainMessages = await JSON.parse(JSON.stringify(messages));
 
     return (
-        <main className={`grid bg-fondo min-h-[100dvh] gap-3 px-4 py-8 grid-cols-1 text-white`}>
+        <main className={`grid bg-new-white min-h-[100dvh] gap-3 grid-cols-1 text-new-black`}>
             <div
-                className={`border-highlighter border rounded-xl fondo-vacio`}>
+                className={`border`}>
                 <ChatLayout userName={userInfo.name} _id={_id} from={session.user.id} allMessages={plainMessages}/>
             </div>
         </main>

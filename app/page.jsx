@@ -9,10 +9,10 @@ export default function Home() {
   return (
     <>
       <div
-        className={`border-highlighter border bg-fondo h-[95dvh] w-full flex justify-center items-center`}>
+        className={`bg-new-white h-[95dvh] w-full flex justify-center items-center`}>
         <div className="flex justify-center items-center flex-col w-5/6 sm:w-1/2 gap-4">
-          <Image src={"/logo.png"} width={250} height={250} alt="Logo de la app"/>
-          <p className="text-highlighter text-center">
+          {/* <Image src={"/logo.png"} width={250} height={250} alt="Logo de la app"/> */}
+          <p className="text-new-black text-center">
             Esta pagina la construi para mi esposa, para poder estar en comunicacion en todo momento.
           </p>
           <div className="flex gap-4 flex-col sm:flex-row">

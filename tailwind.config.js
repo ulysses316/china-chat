@@ -17,6 +17,11 @@ module.exports = {
         highlighter: "#7f5af0",
         alter: "#2cb67d",
         my_white: "#f5f5f5",
+        new: {
+          white: "#F4F4F5",
+          gray: "#E4E4E7",
+          black: "#09090B",
+        },
       },
     },
   },

@@ -23,8 +23,8 @@ export default async function page() {
 
     return (
         <main
-            className={`grid bg-fondo min-h-[100dvh] gap-3 px-4 py-8 grid-cols-1 text-white`}>
-            <div className={`border-highlighter border rounded-xl`}>
+            className={`grid bg-new-white min-h-[100dvh] gap-3 px-2 py-2 grid-cols-1 text-new-black`}>
+            <div className={``}>
                 <div className={`overflow-y-scroll max-h-[92vh]`}>
                     {users.data.map((item, index) => (
                         <ChatSelect user_data={item} key={`chat-${index}`}/>

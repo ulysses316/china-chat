@@ -57,3 +57,7 @@ body {
   background-image: radial-gradient(#7f5af0 1.25px, #16161A 1.25px);
   background-size: 25px 25px;
 }
+
+body {
+  min-height: 100dvh;
+}
