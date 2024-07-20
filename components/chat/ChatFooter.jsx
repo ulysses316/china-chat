@@ -19,7 +19,7 @@ export default function ChatFooter({ socket, from, to, roomId }) {
     };
 
     return (
-        <form onSubmit={(e) => handdleSubmit(e)} className='absolute bottom-0 bg-new-gray py-2 w-full flex gap-4 items-center px-3 justify-between'>
+        <form onSubmit={(e) => handdleSubmit(e)} className=' bg-new-gray py-2 w-full flex gap-4 items-center px-3 justify-between'>
             <MdOutlineEmojiEmotions onClick={() => setEmojiVisible(!emojiVisible)} className="text-3xl" />
             {emojiVisible && (
                 <div className="absolute bottom-20 md:left-16">

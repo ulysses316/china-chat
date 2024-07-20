@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import Image from 'next/image';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation';
+import Button from '../common/Button';
 
 export default function LoginCard() {
   const user = useSession()
@@ -45,10 +46,10 @@ export default function LoginCard() {
   })
 
   return (
-    <form onSubmit={formik.handleSubmit} className='border-highlighter border text-white h-auto py-8 sm:w-96 w-80 rounded-md bg-fondo flex justify-center items-center flex-col px-4'>
+    <form onSubmit={formik.handleSubmit} className='border-2 border-new-gray text-new-black h-auto py-8 sm:w-96 w-80 rounded-md bg-new-white flex justify-center items-center flex-col px-4'>
       <div className='flex flex-col justify-center gap-2 py-1 w-full'>
         <div className='flex justify-center text-3xl'>
-          <Image src={"/logo.png"} width={200} height={200} alt="Logo de la app" />
+          {/* <Image src={"/logo.png"} width={200} height={200} alt="Logo de la app" /> */}
         </div>
 
         {/* Error General */}
@@ -65,7 +66,7 @@ export default function LoginCard() {
           </div>
         ) : null}
         <label className='font-bold'>Email</label>
-        <input className='rounded-md border border-highlighter outline-none bg-transparent text-white py-1 px-2' type="text" name='email' onChange={formik.handleChange} />
+        <input className='rounded-md border-2 border-new-gray outline-none bg-transparent text-new-black py-1 px-2' type="text" name='email' onChange={formik.handleChange} />
       </div>
       <div className='flex flex-col justify-center gap-2 py-2 w-full'>
         {formik.errors.password && formik.touched.password ? (
@@ -74,10 +75,10 @@ export default function LoginCard() {
           </div>
         ) : null}
         <label className='font-bold'>Contraseña</label>
-        <input className='rounded-md border border-highlighter outline-none bg-transparent text-white py-1 px-2' type="password" name='password' onChange={formik.handleChange} />
+        <input className='rounded-md border-2 border-new-gray outline-none bg-transparent text-new-black py-1 px-2' type="password" name='password' onChange={formik.handleChange} />
       </div>
       <div className='flex justify-center pt-4'>
-        <button className='text-white bg-highlighter font-bold px-2 py-2 rounded-md' type='submit'>Iniciar sesion</button>
+        <Button className={"bg-new-blue text-white"} type={"submit"}>Iniciar sesion</Button>
       </div>
     </form>
   )

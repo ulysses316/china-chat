@@ -19,8 +19,8 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
     return (
         <section className="relative">
             <ChatHeader userName={userName} />
-            <div className="flex flex-col gap-2 p-4 min-h-[88vh] max-h-[88vh] overflow-y-scroll">
-                {allMessages?.map((message, index) => (
+            <div className="flex flex-col gap-2 p-4 h-[85dvh] overflow-y-scroll bg-blue-200">
+                {allMessages?.slice(0).reverse().map((message, index) => (
                     <ChatMessage key={crypto.randomUUID()} data_message={message} fromThisUser={message.sender === from} />
                 ))}
                 {sessionMessage?.map((message, index) => (
