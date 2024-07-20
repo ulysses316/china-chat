@@ -36,10 +36,13 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
     }
 
     const handleTopScroll = async (scrollHeight) => {
-        if (scrollHeight === 0) {
+        if (scrollHeight === 0 && topScrollCount !== 0) {
             const oldMessages = await getOldMessages();
 
-            if (oldMessages.length === 0) return;
+            if (oldMessages.length === 0) {
+                setTopScrollCount(0);
+                return
+            };
 
             setTopScrollCount(topScrollCount + 20);
             setOldMessages(prevMessages => [...prevMessages, ...oldMessages]);
