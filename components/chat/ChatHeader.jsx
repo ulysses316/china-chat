@@ -1,11 +1,12 @@
-import { FaArrowLeft } from "react-icons/fa6";
+'use client'
+import { FaArrowLeft, FaVideo } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
 
 
 export default function ChatHeader({ userName }) {
     return (
-        <div className='h-16 bg-new-gray flex justify-between items-center px-8'>
+        <div className='h-[8dvh] bg-new-gray flex justify-between items-center px-8'>
             <div className="flex justify-center items-center gap-4">
                 <Link href={"/chat"}>
                     <FaArrowLeft className="text-xl" />
@@ -15,7 +16,7 @@ export default function ChatHeader({ userName }) {
                 ): null}
             </div>
             <div>
-                {/* <Image src={"/logo.png"} width={150} height={150} alt="Logo de la app" /> */}
+                <FaVideo className="text-2xl"/>
             </div>
         </div>
     )

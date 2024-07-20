@@ -10,14 +10,13 @@ export default async function page({ params }) {
     const { _id } = params;
     const userInfo = await getUserInfo(_id)
     const session = await getServerSession(authOptions)
-    const messages = await getAllMessages(session.user.id, _id)
-    const plainMessages = await JSON.parse(JSON.stringify(messages));
+    const messages = await getAllMessages(session.user.id, _id, 0)
 
     return (
         <main className={`grid bg-new-white min-h-[100dvh] gap-3 grid-cols-1 text-new-black`}>
             <div
                 className={`border`}>
-                <ChatLayout userName={userInfo.name} _id={_id} from={session.user.id} allMessages={plainMessages}/>
+                <ChatLayout userName={userInfo.name} _id={_id} from={session.user.id} allMessages={messages}/>
             </div>
         </main>
     );
