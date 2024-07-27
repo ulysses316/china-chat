@@ -14,6 +14,7 @@ export default function ChatFooter({ socket, from, to, roomId }) {
 
     const handdleSubmit = (e) => {
         e.preventDefault();
+        if (message === "") return;
         socket.emit("chat message", { message: message, user_id: to, sender: from, roomId: roomId })
         setMessage("");
     };
@@ -23,7 +24,7 @@ export default function ChatFooter({ socket, from, to, roomId }) {
             <MdOutlineEmojiEmotions onClick={() => setEmojiVisible(!emojiVisible)} className="text-3xl" />
             {emojiVisible && (
                 <div className="absolute bottom-20 md:left-16">
-                    <EmojiPicker theme="dark" onEmojiClick={(emojiData) => setMessage(message + emojiData.emoji)} />
+                    <EmojiPicker theme="dark" onEmojiClick={(emojiData) = setMessage(message + emojiData.emoji)} />
                 </div>
             )}
             <textarea className="w-full rounded-md text-new-black bg-new-gray border-new-black border p-1" type="text" value={message} onChange={(e) => handleChange(e.target.value)} />
