@@ -127,9 +127,7 @@ const Page = (params) => {
                 <div className='bg-[#202020] rounded-lg w-full aspect-video flex justify-center items-center relative'>
                     <video className='w-full rounded-lg absolute' ref={remoteVideo} autoPlay />
                     {inCall ? null : <p className='text-new-white text-3xl absolute z-10'>Conectandose...</p>}
-                </div>
-                <div>
-                    <video className='absolute bottom-0 right-0 w-96 rounded-lg' ref={myVideo} autoPlay />
+                    <video className='absolute bottom-3 right-3 w-96 rounded-lg' ref={myVideo} autoPlay />
                 </div>
                 {inCall && (
                     <div className='flex justify-center items-center pt-4 gap-4'>
