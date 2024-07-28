@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: "/socket.io/:path*",
-        destination: "http://localhost:3001/socket.io/:path*", // Proxy to Backend
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/socket.io/:path*`, // Proxy to Backend
       },
     ];
   },

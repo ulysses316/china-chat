@@ -14,7 +14,7 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
     const [topScrollCount, setTopScrollCount] = useState(20);
     const [loading, setLoading] = useState(false);
     const [oldMessages, setOldMessages] = useState([]);
-    const socket = io('http://localhost:3001');
+    const socket = io(`${process.env.NEXT_PUBLIC_API_URL}`);
     const roomId = combineWords(_id, from).toString();
     const container = useRef()
 
