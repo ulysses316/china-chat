@@ -7,7 +7,7 @@ import { FiVideo, FiVideoOff, FiMic, FiMicOff, FiPhoneOff } from "react-icons/fi
 
 const socket = io(`${process.env.NEXT_PUBLIC_API_URL}`);
 
-const Page = (params) => {
+const Page = ({params}) => {
     const router = useRouter();
     const [myId, setMyId] = useState('');
     const [remoteId, setRemoteId] = useState('');
@@ -26,6 +26,9 @@ const Page = (params) => {
             port: '3001',
             path: '/peerjs',
         });
+
+        // socket.emit("join-room", params.roomId)
+        
 
         peer.on('open', (id) => {
             setMyId(id);

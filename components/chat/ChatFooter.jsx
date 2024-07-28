@@ -15,7 +15,7 @@ export default function ChatFooter({ socket, from, to, roomId }) {
     const handdleSubmit = (e) => {
         e.preventDefault();
         if (message === "") return;
-        socket.emit("chat message", { message: message, user_id: to, sender: from, roomId: roomId })
+        socket.emit("chat-message", { message: message, user_id: to, sender: from, roomId: roomId })
         setMessage("");
     };
 

@@ -18,9 +18,12 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
     const roomId = combineWords(_id, from).toString();
     const container = useRef()
 
-    socket.on(roomId, (msg) => {
-        setSessionMessage([...sessionMessage, msg])
-    });
+    socket.emit("join-room", roomId);
+
+    socket.on("receive-message", (message) => {
+        console.log(message);
+        setSessionMessage([...sessionMessage, message])
+    })
 
     useEffect(() => {
         if (container.current) {
@@ -51,7 +54,7 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
 
     return (
         <section className="relative">
-            <ChatHeader userName={userName} roomId={roomId}/>
+            <ChatHeader userName={userName} roomId={roomId} />
             <div className="flex flex-col gap-2 p-4 h-[83dvh] overflow-y-scroll bg-blue-200" ref={container} onScroll={() => { handleTopScroll(container.current.scrollTop); }}>
 
 
