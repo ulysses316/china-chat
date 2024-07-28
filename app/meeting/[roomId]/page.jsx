@@ -7,7 +7,7 @@ import { FiVideo, FiVideoOff, FiMic, FiMicOff, FiPhoneOff } from "react-icons/fi
 
 const socket = io(`${process.env.NEXT_PUBLIC_API_URL}`);
 
-const Page = ({params}) => {
+const Page = ({ params, searchParams }) => {
     const router = useRouter();
     const [myId, setMyId] = useState('');
     const [remoteId, setRemoteId] = useState('');
@@ -27,12 +27,14 @@ const Page = ({params}) => {
             path: '/peerjs',
         });
 
-        // socket.emit("join-room", params.roomId)
-        
-
         peer.on('open', (id) => {
             setMyId(id);
-            socket.emit('join-room', 'room-id', id);
+            if (searchParams?.meetingid ?? false) {
+                setRemoteId(searchParams?.meetingid)
+            } else {
+                console.log("myId: ", id);
+                socket.emit("call-user", params.roomId, id)
+            }
         });
 
         peer.on('call', (call) => {
@@ -114,19 +116,13 @@ const Page = ({params}) => {
         }, 500);
     };
 
+    useEffect(() => {
+        callRemotePeer();
+    }, [remoteId]);
+
     return (
         <>
             <main className="bg-new-white min-h-[100dvh] relative p-4">
-                <div>
-                    <h2>My ID: {myId}</h2>
-                    <input
-                        type="text"
-                        placeholder="Enter remote peer ID"
-                        value={remoteId}
-                        onChange={(e) => setRemoteId(e.target.value)}
-                    />
-                    <button onClick={callRemotePeer}>Call</button>
-                </div>
                 <div className='bg-[#202020] rounded-lg w-full aspect-video flex justify-center items-center relative'>
                     <video className='w-full rounded-lg absolute' ref={remoteVideo} autoPlay />
                     {inCall ? null : <p className='text-new-white text-3xl absolute z-10'>Conectandose...</p>}

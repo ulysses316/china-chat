@@ -21,8 +21,11 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
     socket.emit("join-room", roomId);
 
     socket.on("receive-message", (message) => {
-        console.log(message);
         setSessionMessage([...sessionMessage, message])
+    })
+
+    socket.on("receive-call", (meetingid) => {
+        setSessionMessage([...sessionMessage, { meetingid: meetingid, sender: "meeting" }])
     })
 
     useEffect(() => {
@@ -68,7 +71,9 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
                     <ChatMessage key={crypto.randomUUID()} data_message={message} fromThisUser={message.sender === from} />
                 ))}
                 {sessionMessage?.map((message, index) => (
-                    <ChatMessage key={crypto.randomUUID()} data_message={message} fromThisUser={message.sender === from} />
+                    message.sender === "meeting" ? (
+                        <a className="rounded-lg font-bold px-3 py-3 text-lg sm:text-base max-w-[100%] sm:max-w-[70%] lg:max-w-[45%] text-new-white bg-blue-600 self-start animate-pulse" href={`/meeting/${roomId}?meetingid=${message.meetingid}`}>Unirte a la video llamada</a>
+                    ) : (<ChatMessage key={crypto.randomUUID()} data_message={message} fromThisUser={message.sender === from} />)
                 ))}
             </div>
             <ChatFooter socket={socket} to={_id} from={from} roomId={roomId} />
