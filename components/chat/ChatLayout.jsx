@@ -51,7 +51,7 @@ export default function ChatLayout({ _id, userName, from, allMessages }) {
 
     return (
         <section className="relative">
-            <ChatHeader userName={userName} />
+            <ChatHeader userName={userName} roomId={roomId}/>
             <div className="flex flex-col gap-2 p-4 h-[83dvh] overflow-y-scroll bg-blue-200" ref={container} onScroll={() => { handleTopScroll(container.current.scrollTop); }}>
 
 
